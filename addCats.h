@@ -15,4 +15,4 @@
 #include <string.h>
 #include "catDatabase.h"
 
-int addCat(const char name[], const Gender gender, const Breed breed, const bool isFixed, const double weight, const Color collarColor1, const Color collarColor2, const License license, const char birthday[]);
+int addCat(const char name[], const Gender gender, const Breed breed, const bool isFixed, const Weight weight, const Color collarColor1, const Color collarColor2, const License license, const char birthday[]);

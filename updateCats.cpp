@@ -36,7 +36,7 @@ int fixCat(const Cat_index index){
     return 0;
 }//End of fixCat
 
-int updateCatWeight(const Cat_index index, const double newWeight){
+int updateCatWeight(const Cat_index index, const Weight newWeight){
     if(isWeightValid(newWeight) == true){
         catdb[index].weight = newWeight;
         return 0;

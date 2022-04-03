@@ -19,22 +19,22 @@
 extern Cat_index currentCatNum; // Declared externally in catDatabase.c
 //extern color color;
 
-extern char* toColor ( const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
+extern const char* toColor ( const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
     switch(color){
-        case 0:	return (char*)"Black";	break;
-        case 1:	return (char*)"White";	break;
-        case 2:	return (char*)"Purple";break;
-        case 3:	return (char*)"Blue";	break;
-        case 4:	return (char*)"Aqua";	break;
-        case 5:	return (char*)"Green";	break;
-        case 6:	return (char*)"Yellow";break;
-        case 7:	return (char*)"Orange";break;
-        case 8: return (char*)"Red";	break;
-        case 9: return (char*)"Pink";	break;
-        case 10:return (char*)"brown";	break;
-        case 11:return (char*)"Rainbow";break;
-        case 12:return (char*)"Other"	;break;
-        default:return (char*)"How'd you even do this??";	break;
+        case 0:	return "Black";	break;
+        case 1:	return "White";	break;
+        case 2:	return "Purple"; break;
+        case 3:	return "Blue";	break;
+        case 4:	return "Aqua";	break;
+        case 5:	return "Green";	break;
+        case 6:	return "Yellow"; break;
+        case 7:	return "Orange"; break;
+        case 8: return "Red";	break;
+        case 9: return "Pink";	break;
+        case 10:return "brown";	break;
+        case 11:return "Rainbow";break;
+        case 12:return "Other";  break;
+        default:return "How'd you even do this??";	break;
     }//End of switch
 }//End of toColor
 

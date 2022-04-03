@@ -23,6 +23,7 @@ typedef enum {BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RA
 
 //Defines aliases
 typedef size_t Cat_index; // Sets a new datatype , Cat_index, as alias to size_t
+typedef float Weight;
 typedef unsigned long long License;
 typedef struct tm Birthday;
 
@@ -34,7 +35,7 @@ struct Cat {
     Gender              gender;         //enum genders declared above
     Breed               breed;          //enum breeds declared above
     bool                isFixed;
-    float               weight;
+    Weight              weight;
     Color               collarColor1;   //enum color declared above
     Color               collarColor2;   //...
     unsigned long long  license;
@@ -48,7 +49,7 @@ extern struct Cat catdb[MAX_CATS]; //This doesnt allocate any memory, just says 
 //Function Declarations
 extern bool isdbFull();
 extern bool isNameValid(const char name[]);
-extern bool isWeightValid(double weight);
+extern bool isWeightValid(Weight weight);
 extern bool isLicenseValid(License license);
 extern bool isCollarValid(Color collarColor1, Color collarColor2);
 extern bool isFixingCatPossible(Cat_index index);

@@ -14,14 +14,13 @@
 #include "reportCats.h"
 #include "updateCats.h"
 
-#include <stdbool.h>    //For Boolean operator
 #include <stdlib.h>		//For exit Success and exit Failure
 #include <assert.h>		//For assert
 #include <stdio.h>      // For strings etc
 
 int main(){ // int argc, char* argv[] have been removed as they are not used in this program
     setvbuf(stdout, NULL, _IONBF, 0);//Fixes errors with things being printed out of order
-    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stdin, nullptr, _IONBF, 0);
     if(DEBUGMODE){
         //-----------------------------------------Check addCats & db-------------------------------------------
         printf("\n----addCats & db checking----");
@@ -38,9 +37,9 @@ int main(){ // int argc, char* argv[] have been removed as they are not used in 
         addCat( "Loki", MALE, PERSIAN, true, 8.5, PINK, PURPLE, 109, "April 14, 2022" ); //Cats can't have same name
         addCat( "Mauritus", MALE, PERSIAN, true, (double)0 , RED, YELLOW, 110, "Oct 12, 2009"); //Cats weight must be > 0
         addCat( "Mochi", FEMALE, SHORTHAIR, false, 12.4, PURPLE, RED, 111, "Jan 33, 2022") ;//Date must be >= 31 for any month
-        addCat( "Lochi", FEMALE, SHORTHAIR, false, 12.4, GREEN, YELLOW, 112, "April 31, 2022") ;//A 30-day month cant have more than 30 days
-        addCat( "Kochi", FEMALE, SHORTHAIR, false, 12.4, BLUE, GREEN, 113, "Feb 29, 2022") ;//Febuary must have less than 29 days when its not a leap year
-        addCat( "Bob", FEMALE, SHORTHAIR, false, 12.4, ORANGE, AQUA, 114, "Feb 29, 2024") ;//Febuary must have less than 30 days when its a leap year. This shouldn't error!
+        addCat( "Lochi", FEMALE, SHORTHAIR, false, 12.4, GREEN, YELLOW, 112, "April 31, 2022") ;//A 30-day month can't have more than 30 days
+        addCat( "Kochi", FEMALE, SHORTHAIR, false, 12.4, BLUE, GREEN, 113, "Feb 29, 2022") ;//February must have less than 29 days when it's not a leap year
+        addCat( "Bob", FEMALE, SHORTHAIR, false, 12.4, ORANGE, AQUA, 114, "Feb 29, 2024") ;//February must have less than 30 days when it's a leap year. This shouldn't error!
         addCat( "Bobby", FEMALE, SHORTHAIR, false, 12.4, ORANGE, BLUE, 115, "Jeb 29, 2024") ;//Jeb is not a valid month
 
         //-------------------------------------------Check reportCats ------------------------------------------------
@@ -138,5 +137,5 @@ int main(){ // int argc, char* argv[] have been removed as they are not used in 
             printf( "Done with %s\n", PROGRAM_NAME ) ;
             return( EXIT_SUCCESS ) ;
             */
-    }//End of extensiveDeug
+    }//End of extensive Debug
 }//End of main()

@@ -55,8 +55,8 @@ bool isNameValid(const char name[]){
     return value;
 }//End of isNameValid
 
-bool isWeightValid(const double weight){
-    if( weight <= 0 || weight > MAX_CAT_WEIGHT ){ //If weight lessthan or equal to zero or unreasonable
+bool isWeightValid(const Weight weight){
+    if( weight <= 0 || weight > MAX_CAT_WEIGHT ){ //If weight less than or equal to zero or unreasonable
         fprintf(stderr, "%s: The cat's weight must be greater than zero and reasonable.\n", PROGRAM_NAME);
         return false;
     }//End of if
@@ -96,6 +96,8 @@ bool isFixingCatPossible(const Cat_index index){
     return true;
 }//End of isFixingCatPossible
 
+/// Convert a string to ...
+/// @param birthdayString possible values include "XXXX", "XXXX", "XXXX"
 Birthday makeBirthday(const char birthdayString[]){ //return a struct tm (tydef is called birthday)
     //This code splits the input string into 3 sections and stores it in an array
     char birthdayBuffer[20];//Used to store copy of birthday
@@ -110,7 +112,7 @@ Birthday makeBirthday(const char birthdayString[]){ //return a struct tm (tydef 
 
     //This code sets the birth month to an int that can be interpreted by the tm function
     if(strcmp(birthdayArray[0],"Jan") == 0 || strcmp(birthdayArray[0],"January") == 0){
-        birthdayArray[0] = (char*)"0";
+        birthdayArray[0] = (char*) "0";
     } else if(strcmp(birthdayArray[0],"Feb") == 0 || strcmp(birthdayArray[0],"Febuary") == 0){
         birthdayArray[0] = (char*)"1";
     } else if(strcmp(birthdayArray[0],"Mar") == 0 || strcmp(birthdayArray[0],"March") == 0){

@@ -18,7 +18,7 @@
 extern Cat_index currentCatNum; // Declared externally in catDatabase.c as type size_t
 
 //Used to add cat to the database
-int addCat(const char name[], const Gender gender, const Breed breed, const bool isFixed, const double weight, const Color collarColor1, const Color collarColor2, const License license, const char birthdayString[]){
+int addCat(const char name[], const Gender gender, const Breed breed, const bool isFixed, const Weight weight, const Color collarColor1, const Color collarColor2, const License license, const char birthdayString[]){
     Birthday birthday = makeBirthday(birthdayString);//Convert birthday string to struct tm
     if( (isdbFull() == false) && (isNameValid(name) == true) && (isWeightValid(weight) == true) && (isCollarValid(collarColor1, collarColor2) == true) && (isLicenseValid(license) == true) && (isBirthdayValid(birthday) == true) ){
         strcpy(catdb[currentCatNum].name, name);
