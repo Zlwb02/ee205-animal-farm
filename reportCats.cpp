@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-extern Cat_index currentCatNum; // Declared externally in catDatabase.c
+extern NumCats currentCatNum; // Declared externally in catDatabase.c
 //extern color color;
 
 extern const char* toColor ( const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
@@ -39,7 +39,7 @@ extern const char* toColor ( const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQU
 }//End of toColor
 
 //Prints the data stored in the array of a specific cat given an index
-int printCat(const Cat_index index){
+int printCat(const NumCats index){
     char dateFormatted[10];//Used to store formatted Date for printf
     strftime(dateFormatted,sizeof(dateFormatted), "%d/%m/%y", &catdb[index].birthday);//Formats datefrom struct tm number as dd/mm/yy per spec.
     if(index > currentCatNum){
@@ -64,7 +64,7 @@ int printCat(const Cat_index index){
 
 //Prints all cats in db
 int printAllCats(){
-    for(Cat_index i = 0; i < currentCatNum; i++){
+    for(NumCats i = 0; i < currentCatNum; i++){
         printCat(i);
     }
     return 0;
@@ -74,7 +74,7 @@ int printAllCats(){
 int findCat(const char lookupName[] ){
     bool found = false;
     int foundindex;
-    for(Cat_index i = 0; i < currentCatNum; i++ ){
+    for(NumCats i = 0; i < currentCatNum; i++ ){
         if( strcmp(catdb[i].name, lookupName ) == 0){
             found = true;
             foundindex = i;

@@ -15,7 +15,7 @@
 #include <stdbool.h> //Declares bool type
 #include "catDatabase.h"
 
-extern Cat_index currentCatNum; // Declared externally in catDatabase.c as type size_t
+extern NumCats currentCatNum; // Declared externally in catDatabase.c as type size_t
 
 //Used to add cat to the database
 int addCat(const char name[], const Gender gender, const Breed breed, const bool isFixed, const Weight weight, const Color collarColor1, const Color collarColor2, const License license, const char birthdayString[]){

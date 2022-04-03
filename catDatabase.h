@@ -22,7 +22,7 @@ typedef enum {BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RA
 
 
 //Defines aliases
-typedef size_t Cat_index; // Sets a new datatype , Cat_index, as alias to size_t
+typedef size_t NumCats; // Sets a new datatype , NumCats, as alias to size_t
 typedef float Weight;
 typedef unsigned long long License;
 typedef struct tm Birthday;
@@ -52,6 +52,6 @@ extern bool isNameValid(const char name[]);
 extern bool isWeightValid(Weight weight);
 extern bool isLicenseValid(License license);
 extern bool isCollarValid(Color collarColor1, Color collarColor2);
-extern bool isFixingCatPossible(Cat_index index);
+extern bool isFixingCatPossible(NumCats index);
 extern Birthday makeBirthday(const char birthday[]);
 extern bool isBirthdayValid(Birthday birthday);

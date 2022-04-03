@@ -15,6 +15,6 @@
 #include <string.h>
 #include "catDatabase.h"
 
-int printCat(const Cat_index index);
+int printCat(const NumCats index);
 int printAllCats();
 int findCat(const char lookupName[]);

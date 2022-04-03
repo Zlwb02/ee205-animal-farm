@@ -17,7 +17,7 @@
 #include "config.h"
 #include "updateCats.h"
 
-extern Cat_index currentCatNum; // Declared externally in catDatabase.c
+extern NumCats currentCatNum; // Declared externally in catDatabase.c
 
 int updateCatName(const int index, const char newName[]){
     if(isNameValid(newName) == true){
@@ -27,7 +27,7 @@ int updateCatName(const int index, const char newName[]){
     return -1;
 }//End of upDateCatName
 
-int fixCat(const Cat_index index){
+int fixCat(const NumCats index){
     if( isFixingCatPossible(index) == false){
         fprintf(stderr,"%s: %s has already been fixed... Thats not good... ", PROGRAM_NAME, catdb[index].name);
         return -1;
@@ -36,7 +36,7 @@ int fixCat(const Cat_index index){
     return 0;
 }//End of fixCat
 
-int updateCatWeight(const Cat_index index, const Weight newWeight){
+int updateCatWeight(const NumCats index, const Weight newWeight){
     if(isWeightValid(newWeight) == true){
         catdb[index].weight = newWeight;
         return 0;
@@ -44,7 +44,7 @@ int updateCatWeight(const Cat_index index, const Weight newWeight){
     return -1;
 }//End of updateCatWeight
 
-int updateCatCollar1(const Cat_index index, const Color newCatCollar1){
+int updateCatCollar1(const NumCats index, const Color newCatCollar1){
     if( isCollarValid(newCatCollar1, catdb[index].collarColor2) == true){
         catdb[index].collarColor1 = newCatCollar1;
         return 0;
@@ -52,7 +52,7 @@ int updateCatCollar1(const Cat_index index, const Color newCatCollar1){
     return -1;
 }//End of updateCatCollar1
 
-int updateCatCollar2(const Cat_index index, const Color newCatCollar2){
+int updateCatCollar2(const NumCats index, const Color newCatCollar2){
     if( isCollarValid(catdb[index].collarColor1, newCatCollar2) == true ){
         catdb[index].collarColor2 = newCatCollar2;
         return 0;
@@ -60,7 +60,7 @@ int updateCatCollar2(const Cat_index index, const Color newCatCollar2){
     return -1;
 }//End of updateCatCollar2
 
-int updateLicense(const Cat_index index, const License newLicense){
+int updateLicense(const NumCats index, const License newLicense){
     if (isLicenseValid(newLicense) == true){
         catdb[index].license = newLicense;
         return 0;
@@ -68,7 +68,7 @@ int updateLicense(const Cat_index index, const License newLicense){
     return -1;
 }//End of updateLicense
 
-int updateBirthday(const Cat_index index, const char birthdayString[]){
+int updateBirthday(const NumCats index, const char birthdayString[]){
     Birthday birthday = makeBirthday(birthdayString);//Convert birthday string to struct tm
     if(isBirthdayValid(birthday) == true){
         catdb[index].birthday = birthday;
