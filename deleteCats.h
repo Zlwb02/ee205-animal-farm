@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "catDatabase.h"//For Cat_index
+#include "catDatabase.h"//For NumCats
 
 extern int deleteAllCats();
-extern int deleteCat(const Cat_index index);
+extern int deleteCat(const NumCats index);

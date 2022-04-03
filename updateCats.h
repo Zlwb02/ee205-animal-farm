@@ -16,9 +16,9 @@
 #include "catDatabase.h"
 
 extern int updateCatName(const int index, const char newName[]);
-extern int fixCat(const Cat_index index);
-extern int updateCatWeight(const Cat_index index, const Weight newWeight);
-extern int updateCatCollar1(const Cat_index index, const Color newcatCollar1);
-extern int updateCatCollar2(const Cat_index index, const Color newcatCollar2);
-extern int updateLicense(const Cat_index index, const License newlicense);
-extern int updateBirthday(const Cat_index index, const char birthdayString[]);
+extern int fixCat(const NumCats index);
+extern int updateCatWeight(const NumCats index, const Weight newWeight);
+extern int updateCatCollar1(const NumCats index, const Color newcatCollar1);
+extern int updateCatCollar2(const NumCats index, const Color newcatCollar2);
+extern int updateLicense(const NumCats index, const License newlicense);
+extern int updateBirthday(const NumCats index, const char birthdayString[]);

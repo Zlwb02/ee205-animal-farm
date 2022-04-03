@@ -15,8 +15,8 @@
 #include <stdio.h>      //Define stderr
 #include <stdlib.h>     //Define atoi
 
-//This keeps track of the current number of cats. Use externally with "extern Cat_index currentCatNum;"
-Cat_index currentCatNum = 0;
+//This keeps track of the current number of cats. Use externally with "extern NumCats currentCatNum;"
+NumCats currentCatNum = 0;
 
 //This creates the main array(catdb) that holds [MAX_CATS] number of cats. Values initialized to 0
 struct Cat catdb[MAX_CATS]; //This does not declare a struct! Struct just says Cat is type struct. This does however make(allocate memory) the db of size [Max_CATS]
@@ -46,7 +46,7 @@ bool isNameValid(const char name[]){
         fprintf(stderr, "%s: The cat's name is too long; must be under 30 charachters.\n", PROGRAM_NAME);
         return false;
     }//End of if
-    for(Cat_index i= 0; i < currentCatNum; i++){ //Determine if name is unique
+    for(NumCats i= 0; i < currentCatNum; i++){ //Determine if name is unique
         if( strcmp(catdb[i].name,name) == 0 ){
             fprintf(stderr, "%s: The cat name %s is already taken, please choose another.\n", PROGRAM_NAME, name);
             value = false;
@@ -65,7 +65,7 @@ bool isWeightValid(const Weight weight){
 
 bool isLicenseValid(const License license){
     bool value = true;
-    for(Cat_index i= 0; i < currentCatNum; i++){ //Determine if License is unique
+    for(NumCats i= 0; i < currentCatNum; i++){ //Determine if License is unique
         if(catdb[i].license == license){
             value = false;
             fprintf(stderr, "%s: The License number is already in use on %s\n", PROGRAM_NAME, catdb[i].name);
@@ -80,7 +80,7 @@ bool isCollarValid(const Color collarColor1, const Color collarColor2){
         fprintf(stderr, "%s: The Cat collars cannot be the same color.\n", PROGRAM_NAME);
         value = false;
     }//End of if
-    for(Cat_index i = 0; i < currentCatNum; i++){ //Determine if catCollar combination is unique
+    for(NumCats i = 0; i < currentCatNum; i++){ //Determine if catCollar combination is unique
         if((catdb[i].collarColor1 == collarColor1) && (catdb[i].collarColor2 == collarColor2)){
             fprintf(stderr, "%s: The Cat collar color combination is already in use on %s\n", PROGRAM_NAME, catdb[i].name);
             value = false;
@@ -89,7 +89,7 @@ bool isCollarValid(const Color collarColor1, const Color collarColor2){
     return value;
 }//End of isCollarValid
 
-bool isFixingCatPossible(const Cat_index index){
+bool isFixingCatPossible(const NumCats index){
     if(catdb[index].isFixed == true){
         return false;//False because cat has already been fixed
     }
