@@ -15,11 +15,22 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <iostream>
+
+using namespace std;
 
 extern NumCats currentCatNum; // Declared externally in catDatabase.c
 //extern color color;
 
-extern const char* toColor ( const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
+extern const char* toIsFixedName (const bool isFixed){
+    if(isFixed){
+        return "true";
+    } else {
+        return "false";
+    }
+}//End of toIsFixedName
+
+extern const char* toColorName (const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
     switch(color){
         case 0:	return "Black";	break;
         case 1:	return "White";	break;
@@ -36,26 +47,49 @@ extern const char* toColor ( const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQU
         case 12:return "Other";  break;
         default:return "How'd you even do this??";	break;
     }//End of switch
-}//End of toColor
+}//End of toColorName
+
+extern const char* toBreedName ( const Breed breed){ //UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHYNX
+    switch(breed){
+        case 0: return "Unknown Breed"; break;
+        case 1: return "Maine Coon"; break;
+        case 2: return "Manx"; break;
+        case 3: return "Shorthair"; break;
+        case 4: return "Persian"; break;
+        case 5: return "Sphynx"; break;
+        default: return "How'd you even do this??"; break;
+    }//End of switch
+}//End of toBreedName
+
+extern const char* toGenderName ( const Gender gender){ //UNKNOWN_GENDER,MALE,FEMALE
+    switch(gender){
+        case 0: return "Unknown"; break;
+        case 1: return "Male"; break;
+        case 2: return "Female"; break;
+        default: return "How'd you even do this??"; break;
+    }//End of Switch
+}//End of toGenderName
+
 
 //Prints the data stored in the array of a specific cat given an index
 int printCat(const NumCats index){
     char dateFormatted[10];//Used to store formatted Date for printf
     strftime(dateFormatted,sizeof(dateFormatted), "%d/%m/%y", &catdb[index].birthday);//Formats datefrom struct tm number as dd/mm/yy per spec.
-    if(index > currentCatNum){
+    if(index > currentCatNum){ //Makes sure the input cat index is in the range
         fprintf(stderr, "%s: Bad cat at index %ld",PROGRAM_NAME,index);
         //exit(EXIT_FAILURE);
         return -1;
     }
-    else{ //The print statements should be fixed to accomidate longer values next to shorter values; the tab(\t) will preform imperfectly
-        printf("cat index= %-6lu\t",index);
+
+    else{
+        printf("cat index= %-6lu\t" , index;
         printf("name= %-15s",catdb[index].name);
-        printf("Gender= %-6d",catdb[index].gender);
-        printf("Breed= %-6d",catdb[index].breed);
-        printf("isFixed= %-6d",catdb[index].isFixed);
+        printf("Gender= %-10s", toGenderName(catdb[index].gender));
+        printf("Breed= %-12s",toBreedName(catdb[index].breed));
+        printf("isFixed= %-6s", toIsFixedName(catdb[index].isFixed));
         printf("weight= %-12f",catdb[index].weight);
-        printf("collar1= %-12s",toColor(catdb[index].collarColor1)); //passes color enum number into toColor to be displayed as pointer
-        printf("collar2= %-12s",toColor(catdb[index].collarColor2)); //...
+        printf("collar1= %-12s", toColorName(catdb[index].collarColor1)); //passes color enum number into toColorName to be displayed as pointer
+        printf("collar2= %-12s", toColorName(catdb[index].collarColor2)); //...
         printf("License= %-12llu",catdb[index].license);
         printf("birthday= %s\n",dateFormatted);//Formatted in strftime seen above
         return 0;

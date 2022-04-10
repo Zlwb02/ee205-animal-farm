@@ -46,12 +46,6 @@ bool isNameValid(const char name[]){
         fprintf(stderr, "%s: The cat's name is too long; must be under 30 charachters.\n", PROGRAM_NAME);
         return false;
     }//End of if
-    for(NumCats i= 0; i < currentCatNum; i++){ //Determine if name is unique
-        if( strcmp(catdb[i].name,name) == 0 ){
-            fprintf(stderr, "%s: The cat name %s is already taken, please choose another.\n", PROGRAM_NAME, name);
-            value = false;
-        }//End of if
-    }//End of for loop
     return value;
 }//End of isNameValid
 
