@@ -16,4 +16,4 @@
 #include "catDatabase.h"//For NumCats
 
 extern int deleteAllCats();
-extern int deleteCat(const NumCats index);
+extern int deleteCat(const Cat* index);

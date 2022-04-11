@@ -14,12 +14,49 @@
 #include <stdbool.h>    //Defines the boolean datatype
 #include <stdio.h>      //Define stderr
 #include <stdlib.h>     //Define atoi
-
+#include <stdio.h>
+#include <iostream>
+#include <cassert>
+using namespace std;
 //This keeps track of the current number of cats. Use externally with "extern NumCats currentCatNum;"
 NumCats currentCatNum = 0;
 
+
+Cat* catDatabaseHeadPointer = nullptr; //null cat that signifies last cat in database
+
+void initializeDatabase() {
+    if(catDatabaseHeadPointer != nullptr ) {
+        throw logic_error( PROGRAM_NAME ": Delete the old database first") ;
+    }
+
+    assert( validateDatabase() ) ;
+
+}
+
+extern bool validateDatabase() {
+    int validCats = 0 ;
+
+    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
+        if( !iCat->validate() ) {
+            return false ;
+        }
+
+
+        validCats++ ;
+    }
+
+    if( validCats != currentCatNum ) {
+        cout << PROGRAM_NAME << ": Error:  currentCatNum [" << currentCatNum
+             << "] does not equal [" << validCats << "]" << endl ;
+        return false ;
+    }
+
+    return true ;  // The database is healthy
+}
+
+
 //This creates the main array(catdb) that holds [MAX_CATS] number of cats. Values initialized to 0
-struct Cat catdb[MAX_CATS]; //This does not declare a struct! Struct just says Cat is type struct. This does however make(allocate memory) the db of size [Max_CATS]
+/*struct Cat catdb[MAX_CATS]; //This does not declare a struct! Struct just says Cat is type struct. This does however make(allocate memory) the db of size [Max_CATS]
 
 int initializeDatabase(){
     memset(catdb,0,sizeof(catdb));//Resets all data in catdb to 0
@@ -172,4 +209,4 @@ bool isBirthdayValid(Birthday birthday){
         return false;
     }
     return true;
-}//End of isBirthdayValid
+}//End of isBirthdayValid   */

@@ -17,11 +17,34 @@
 #include <stdlib.h>		//For exit Success and exit Failure
 #include <assert.h>		//For assert
 #include <stdio.h>      // For strings etc
+#include <iostream>
+
+using namespace std;
 
 int main(){ // int argc, char* argv[] have been removed as they are not used in this program
     setvbuf(stdout, NULL, _IONBF, 0);//Fixes errors with things being printed out of order
     setvbuf(stdin, nullptr, _IONBF, 0);
-    if(DEBUGMODE){
+
+    cout << "Starting " << PROGRAM_NAME << endl ;
+    initializeDatabase() ;
+    cout << "Initialized database" << PROGRAM_NAME << endl ;
+    addCat( new Cat( "Loki", MALE, PERSIAN, 1.0 ));
+    printAllCats();
+    /*addCat( new Cat( "Milo", MALE, MANX , 1.1 ));
+    addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 ));
+    addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 ));
+    addCat( new Cat( "Trin", FEMALE, MANX, 1.4 ));
+    addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 ));
+
+    printAllCats() ;
+
+    //deleteAllCats() ;
+
+    printAllCats() ;
+*/
+
+    cout << "Done with " << PROGRAM_NAME << endl ;
+    /*if(DEBUGMODE){
         //-----------------------------------------Check addCats & db-------------------------------------------
         printf("\n----addCats & db checking----");
         addCat( "Loki", MALE, PERSIAN, true, 8.5, BLACK, WHITE, 101, "Jan 31, 2010" ) ;
@@ -82,6 +105,8 @@ int main(){ // int argc, char* argv[] have been removed as they are not used in 
         printAllCats();
         printf("\n");
     }//End of debug code
+     */
+
 
     if(EXTENSIVEDEBUG){
         /*

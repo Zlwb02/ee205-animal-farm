@@ -20,9 +20,8 @@
 using namespace std;
 
 extern NumCats currentCatNum; // Declared externally in catDatabase.c
-//extern color color;
 
-extern const char* toIsFixedName (const bool isFixed){
+const char* toIsFixedName (const bool isFixed){
     if(isFixed){
         return "true";
     } else {
@@ -30,7 +29,7 @@ extern const char* toIsFixedName (const bool isFixed){
     }
 }//End of toIsFixedName
 
-extern const char* toColorName (const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
+const char* toColorName (const Color color ) { //BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER
     switch(color){
         case 0:	return "Black";	break;
         case 1:	return "White";	break;
@@ -49,7 +48,7 @@ extern const char* toColorName (const Color color ) { //BLACK,WHITE,PURPLE,BLUE,
     }//End of switch
 }//End of toColorName
 
-extern const char* toBreedName ( const Breed breed){ //UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHYNX
+const char* toBreedName ( const Breed breed){ //UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHYNX
     switch(breed){
         case 0: return "Unknown Breed"; break;
         case 1: return "Maine Coon"; break;
@@ -61,7 +60,7 @@ extern const char* toBreedName ( const Breed breed){ //UNKNOWN_BREED,MAINE_COON,
     }//End of switch
 }//End of toBreedName
 
-extern const char* toGenderName ( const Gender gender){ //UNKNOWN_GENDER,MALE,FEMALE
+const char* toGenderName ( const Gender gender){ //UNKNOWN_GENDER,MALE,FEMALE
     switch(gender){
         case 0: return "Unknown"; break;
         case 1: return "Male"; break;
@@ -72,7 +71,7 @@ extern const char* toGenderName ( const Gender gender){ //UNKNOWN_GENDER,MALE,FE
 
 
 //Prints the data stored in the array of a specific cat given an index
-int printCat(const NumCats index){
+/*int printCat(const NumCats index){
     char dateFormatted[10];//Used to store formatted Date for printf
     strftime(dateFormatted,sizeof(dateFormatted), "%d/%m/%y", &catdb[index].birthday);//Formats datefrom struct tm number as dd/mm/yy per spec.
     if(index > currentCatNum){ //Makes sure the input cat index is in the range
@@ -82,7 +81,7 @@ int printCat(const NumCats index){
     }
 
     else{
-        printf("cat index= %-6lu\t" , index;
+        printf("cat index= %-6lu\t" , index);
         printf("name= %-15s",catdb[index].name);
         printf("Gender= %-10s", toGenderName(catdb[index].gender));
         printf("Breed= %-12s",toBreedName(catdb[index].breed));
@@ -94,19 +93,21 @@ int printCat(const NumCats index){
         printf("birthday= %s\n",dateFormatted);//Formatted in strftime seen above
         return 0;
     }
-}//End of printCat
+}*/
+
 
 //Prints all cats in db
 int printAllCats(){
-    for(NumCats i = 0; i < currentCatNum; i++){
-        printCat(i);
+    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next){
+        iCat->print();
+
     }
     return 0;
 }//End of printAllCats
 
 //find cat index given an name
 int findCat(const char lookupName[] ){
-    bool found = false;
+    /*bool found = false;
     int foundindex;
     for(NumCats i = 0; i < currentCatNum; i++ ){
         if( strcmp(catdb[i].name, lookupName ) == 0){
@@ -121,5 +122,7 @@ int findCat(const char lookupName[] ){
         fprintf(stderr, "%s: Cat %s not found.\n",PROGRAM_NAME, lookupName);
         //exit(EXIT_FAILURE);
         return -1;
-    }
+
+    }*/
+    return -1;
 }//End of findCat

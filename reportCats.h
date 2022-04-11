@@ -15,6 +15,12 @@
 #include <string.h>
 #include "catDatabase.h"
 
-int printCat(const NumCats index);
+int printCat( NumCats index);
 int printAllCats();
-int findCat(const char lookupName[]);
+int findCat( char lookupName[]);
+const char* toIsFixedName(bool isFixed);
+const char* toColor(Color color);
+const char* toBreedName(Breed breed);
+const char* toGenderName(Gender gender);
+
+

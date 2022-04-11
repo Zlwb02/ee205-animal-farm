@@ -15,4 +15,4 @@
 #define MAX_CAT_WEIGHT     1000             //Maximum cat weight; Minimum is hard coded to 0
 #define DEBUGMODE          1                //0 for Debug mode off, 1 for on
 #define EXTENSIVEDEBUG     0
-#define PROGRAM_NAME       "Animal Farm 1"  //Used for error messages
+#define PROGRAM_NAME       "Animal Farm 2"  //Used for error messages

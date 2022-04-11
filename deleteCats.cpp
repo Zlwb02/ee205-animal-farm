@@ -9,29 +9,38 @@
 /// @date   18_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #include "deleteCats.h"
-
+#include "Cat.h"
 #include "catDatabase.h"
-#include <stdio.h>//For printf
-#include <string.h>//For memset
 
 extern NumCats currentCatNum; // Declared externally in catDatabase.c
 
 int deleteAllCats(){
-    memset(catdb,0,sizeof(catdb));//Resets all data in catdb to 0
-    currentCatNum = 0;
-    return 0;
-}
-
-int deleteCat(const NumCats index){
-    if( index > currentCatNum ){
-        fprintf(stderr, "%s: Cannot Delete this item at index %d as it's outside of the database.",PROGRAM_NAME, (int)index);
-        return -1;
-    }
-    else{
-        for(NumCats i = index - 1; i < currentCatNum - 1; i++){
-            catdb[i]= catdb[i+1]; //Move the next element(i+1) one down (i)
-        }
-        currentCatNum -=1;//Moves the index back one
+    while(catDatabaseHeadPointer){
+        deleteCat(catDatabaseHeadPointer);
         return 0;
     }
+}
+
+int deleteCat(const Cat* index){
+    //If the cat to be deleted is the last cat...
+    if( index == catDatabaseHeadPointer ) {
+      catDatabaseHeadPointer = catDatabaseHeadPointer->next ;
+      delete index ;
+      currentCatNum--;
+      return 0 ;
+   }
+
+
+
+    Cat* iCat = catDatabaseHeadPointer;
+    while(iCat != nullptr){
+        if(iCat->next == index){
+            iCat->next = index->next;
+            delete index;
+            currentCatNum --;
+            return 0;
+        }
+        iCat = iCat->next;
+    }
+    return 0;//??
 }

@@ -14,39 +14,19 @@
 #include <stddef.h>  // Allows for size_t. Could also use stdio.h if needed later
 #include <time.h>
 #include "config.h" // For MAX's'
-
-//Defines the enum's
-typedef enum {UNKNOWN_GENDER,MALE,FEMALE} Gender;
-typedef enum {UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHYNX} Breed;
-typedef enum {BLACK,WHITE,PURPLE,BLUE,AQUA,GREEN,YELLOW,ORANGE,RED,PINK,BROWN,RAINBOW,OTHER} Color;
+#include "Cat.h"
 
 
-//Defines aliases
-typedef size_t NumCats; // Sets a new datatype , NumCats, as alias to size_t
-typedef float Weight;
-typedef unsigned long long License;
-typedef struct tm Birthday;
-
-//This creates a new datatype (cats) with the applicable fields.
-struct Cat {
-    //Data type           Data name
-    char                name[MAX_NAME_LENGTH];
-    //struct tm			tm;
-    Gender              gender;         //enum genders declared above
-    Breed               breed;          //enum breeds declared above
-    bool                isFixed;
-    Weight              weight;
-    Color               collarColor1;   //enum color declared above
-    Color               collarColor2;   //...
-    unsigned long long  license;
-    Birthday            birthday;       //Used for storing birthday
-};
 
 
-extern int initializeDatabase();
-extern struct Cat catdb[MAX_CATS]; //This doesnt allocate any memory, just says this fn is declared in catDatabase.c
+extern void initializeDatabase();
+extern bool validateDatabase();
+//extern struct Cat catdb[MAX_CATS]; //This doesnt allocate any memory, just says this fn is declared in catDatabase.c
+extern Cat* catDatabaseHeadPointer;
+
 
 //Function Declarations
+/*
 extern bool isdbFull();
 extern bool isNameValid(const char name[]);
 extern bool isWeightValid(Weight weight);
@@ -55,3 +35,4 @@ extern bool isCollarValid(Color collarColor1, Color collarColor2);
 extern bool isFixingCatPossible(NumCats index);
 extern Birthday makeBirthday(const char birthday[]);
 extern bool isBirthdayValid(Birthday birthday);
+ */

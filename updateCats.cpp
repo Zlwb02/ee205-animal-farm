@@ -16,7 +16,7 @@
 #include "catDatabase.h"
 #include "config.h"
 #include "updateCats.h"
-
+/*
 extern NumCats currentCatNum; // Declared externally in catDatabase.c
 
 int updateCatName(const int index, const char newName[]){
@@ -76,3 +76,4 @@ int updateBirthday(const NumCats index, const char birthdayString[]){
     }
     return -1;
 }
+*/
